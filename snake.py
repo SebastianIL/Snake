@@ -9,6 +9,7 @@ Exercises
 """
 
 from random import randrange
+import random
 from turtle import *
 
 from freegames import square, vector
@@ -16,6 +17,9 @@ from freegames import square, vector
 food = vector(0, 0)
 snake = [vector(10, 0)]
 aim = vector(0, -10)
+#Con ayuda del import random se generarn colores diferentes, tanto para el snake como para food
+hexas= ["#"+''.join([random.choice('ABCDEF0123456789') for i in range(6)])]
+hexaf= ["#"+''.join([random.choice('ABCDEF0123456789') for i in range(6)])]
 
 
 def change(x, y):
@@ -51,9 +55,11 @@ def move():
     clear()
 
     for body in snake:
-        square(body.x, body.y, 9, 'black')
+        #Se inserta el color al azar para snake
+        square(body.x, body.y, 9, hexas)
 
-    square(food.x, food.y, 9, 'green')
+   #Se inserta el color al azar para food
+    square(food.x, food.y, 9, hexaf)
     update()
     ontimer(move, 100)
 
