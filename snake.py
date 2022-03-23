@@ -58,6 +58,19 @@ def move():
     ontimer(move, 100)
 
 
+def movefood():
+    #Se mueve la comida sin salir del cuadro
+    food.x =+ randrange(-10, 11, 10)
+    food.y =+ randrange(-10, 11, 10)
+
+    #Detectar si sigue dentro del cuadro
+    if not inside(food):
+        food.x = randrange(-15, 15) * 20
+        food.y = randrange(-15, 15) * 20
+
+    ontimer(movefood, 600)
+
+
 setup(420, 420, 370, 0)
 hideturtle()
 tracer(False)
@@ -67,4 +80,5 @@ onkey(lambda: change(-10, 0), 'Left')
 onkey(lambda: change(0, 10), 'Up')
 onkey(lambda: change(0, -10), 'Down')
 move()
+movefood()
 done()
